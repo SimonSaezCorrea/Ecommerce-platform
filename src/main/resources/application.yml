@@ -1,0 +1,18 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: topEducation
+  jpa:
+    database: POSTGRESQL
+    show-sql: true
+    hibernate:
+      ddl-auto: create
+  datasource:
+    plataform: postgres
+    driver-class-name: org.postgresql.Driver
+    dbname: host
+    url: jdbc:postgresql://localhost:5432/host
+    username: postgres
+    password: Simon_789
