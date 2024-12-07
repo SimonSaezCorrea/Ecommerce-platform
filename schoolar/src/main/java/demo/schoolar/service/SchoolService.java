@@ -33,4 +33,12 @@ public class SchoolService {
     public List<SchoolEntity> getAllSchools() {
         return schoolRepository.findAll();
     }
+
+    public SchoolEntity findByName(String name) {
+        return schoolRepository.findByName(name);
+    }
+
+    public SchoolEntity login(String name) {
+        return findByName(name);
+    }
 }

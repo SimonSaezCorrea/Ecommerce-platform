@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: multitenant
+  jpa:
+    database: POSTGRESQL
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  datasource:
+    plataform: postgres
+    driver-class-name: org.postgresql.Driver
+    dbname: multitenant-1
+    url: jdbc:postgresql://localhost:5432/multitenant-1
+    username: postgres
+    password: Simon_789
+  cloud:
+    config:
+      enabled: true
+      uri: http://localhost:8081

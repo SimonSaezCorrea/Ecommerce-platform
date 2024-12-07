@@ -1,14 +1,11 @@
-server:
-  port: 8080
-
 spring:
   application:
-    name: topEducation
+    name: schoolar
   jpa:
     database: POSTGRESQL
     show-sql: true
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
   datasource:
     plataform: postgres
     driver-class-name: org.postgresql.Driver
@@ -16,3 +13,7 @@ spring:
     url: jdbc:postgresql://localhost:5432/host
     username: postgres
     password: Simon_789
+  cloud:
+    config:
+      enabled: true
+      uri: http://localhost:8081
