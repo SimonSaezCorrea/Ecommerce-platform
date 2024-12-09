@@ -26,6 +26,39 @@ tener sus propios cursos y estudiantes.
 
 ## Instalación
 
+Instalación de las bases de datos:
+
+1. Instala PostgreSQL en tu máquina.
+2. Crea las base de datos:
+   1. Crea una base de datos llamada `host` (Obligatorio).
+   2. Crea una base de datos llamada `multitenant-0` (Obligatorio).
+   3. Crea una base de datos llamada `school1`.
+   4. Crea una base de datos llamada `school2`.
+   5. O más dependiendo de la necesidad.
+3. Ejecuta el script `create-tables.sql` en cada una de las bases de datos.
+   1. Ejecuta el script en la base de datos `host`.
+      * Debe conteneder:
+        * `school` (id, name, tenant)
+   2. Ejecuta el script en la base de datos `multitenant-0`.
+      * Debe contener:
+        * `datasourceconfig` (id, name, url, username, password, driverclassname, initialize)
+        * `course` (id, description, id_professor, id_school, name)
+        * `professor` (id, name, email)
+        * `student` (id, name, email, id_course)
+   3. Ejecuta el script en la base de datos `school1`.
+      * Debe contener:
+         * `course` (id, description, id_professor, id_school, name)
+         * `professor` (id, name, email)
+         * `student` (id, name, email, id_course)
+   4. Ejecuta el script en la base de datos `school2`.
+      * Debe contener:
+         * `course` (id, description, id_professor, id_school, name)
+         * `professor` (id, name, email)
+         * `student` (id, name, email, id_course)
+4. Ejecuta el script para insertar datos.
+5. Modifica el archivo `application.properties` en el proyecto backend con los
+   datos de tu base de datos.
+
 Instala las dependencias del frontend para su correcto funcionamiento con:
 
 ```bash
