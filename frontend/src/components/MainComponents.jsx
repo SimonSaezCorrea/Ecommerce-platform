@@ -6,9 +6,17 @@ const MainComponents = () => {
    const [courses, setCourses] = useState([]);
 
    useEffect(() => {
+      const tenant = JSON.parse(localStorage.getItem('X-TenantID'));
       const fetchCourses = async () => {
          try {
-            const response = await fetch('http://localhost:8080/course/');
+   
+            const response = await fetch('http://localhost:8080/course/', {
+               headers: {
+                 'X-TenantID': tenant,
+                 'Content-Type': 'application/json'
+               }
+            });
+
             const data = await response.json();
             console.log(data)
             setCourses(data);

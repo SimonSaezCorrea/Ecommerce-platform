@@ -12,6 +12,8 @@ const LoginComponents = () => {
       try {
          const response = await axios.post('http://localhost:8080/school/login/' + school);
          if (response.status === 200) {
+            // Guardar datos en la memoria de la aplicación del navegador
+            localStorage.setItem('X-TenantID', JSON.stringify(response.data.tenant));
             navigate('/main');
          }
       } catch (error) {
