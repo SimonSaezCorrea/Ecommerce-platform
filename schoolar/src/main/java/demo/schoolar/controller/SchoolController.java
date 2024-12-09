@@ -40,21 +40,8 @@ public class SchoolController {
         return ResponseEntity.ok(schoolService.getAllSchools());
     }
 
-    @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody Map<String, String> loginRequest) {
-        String schoolName = loginRequest.get("schoolName");
-        SchoolEntity schoolEntity = schoolService.findByName(schoolName);
-
-        if (schoolEntity == null) {
-            return ResponseEntity.status(404).body("School not found");
-        }
-
-        String token = jwtService.generateToken(schoolEntity.getName(), schoolEntity.getId());
-
-        Map<String, String> response = new HashMap<>();
-        response.put("token", token);
-        response.put("schoolName", schoolEntity.getName());
-
-        return ResponseEntity.ok(response);
+    @PostMapping("/login/{name}")
+    public ResponseEntity<?> login(@PathVariable String name) {
+        return ResponseEntity.ok(schoolService.login(name));
     }
 }
