@@ -15,28 +15,28 @@ public class ProfessorController {
     private ProfessorService professorService;
 
     // Add methods here
-    @PostMapping("/")
-    public ResponseEntity<ProfessorEntity> saveProfessor(ProfessorEntity professorEntity) {
-        return ResponseEntity.ok(professorService.saveProfessor(professorEntity));
+    @PostMapping("/create")
+    public ResponseEntity<ProfessorEntity> saveProfessor(@RequestBody ProfessorEntity professorEntity, @RequestParam String schemaName) {
+        return ResponseEntity.ok(professorService.saveProfessor(professorEntity, schemaName));
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<ProfessorEntity> deleteProfessor(@PathVariable Integer id) {
-        return ResponseEntity.ok(professorService.deleteProfessor(id));
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<ProfessorEntity> deleteProfessor(@PathVariable Integer id, @RequestParam String schemaName) {
+        return ResponseEntity.ok(professorService.deleteProfessor(id, schemaName));
     }
 
-    @PutMapping("/")
-    public ResponseEntity<ProfessorEntity> updateProfessor(ProfessorEntity professorEntity) {
-        return ResponseEntity.ok(professorService.updateProfessor(professorEntity));
+    @PutMapping("/update")
+    public ResponseEntity<ProfessorEntity> updateProfessor(@RequestBody ProfessorEntity professorEntity, @RequestParam String schemaName) {
+        return ResponseEntity.ok(professorService.updateProfessor(professorEntity, schemaName));
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<ProfessorEntity> getProfessorById(@PathVariable Integer id) {
-        return ResponseEntity.ok(professorService.getProfessorById(id));
+    @GetMapping("/get/{id}")
+    public ResponseEntity<ProfessorEntity> getProfessorById(@PathVariable Integer id, @RequestParam String schemaName) {
+        return ResponseEntity.ok(professorService.getProfessorById(id, schemaName));
     }
 
-    @GetMapping("/")
-    public ResponseEntity<List<ProfessorEntity>> getAllProfessors() {
-        return ResponseEntity.ok(professorService.getAllProfessors());
+    @GetMapping("/getall")
+    public ResponseEntity<List<ProfessorEntity>> getAllProfessors(@RequestParam String schemaName) {
+        return ResponseEntity.ok(professorService.getAllProfessors(schemaName));
     }
 }

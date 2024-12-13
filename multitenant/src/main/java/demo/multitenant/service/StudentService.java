@@ -1,7 +1,7 @@
 package demo.multitenant.service;
 
 import demo.multitenant.entity.StudentEntity;
-import demo.multitenant.repository.StudentRepository;
+import demo.multitenant.repository.Student.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,25 +12,25 @@ public class StudentService {
     @Autowired
     private StudentRepository studentRepository;
 
-    public StudentEntity saveStudent(StudentEntity studentEntity) {
-        return studentRepository.save(studentEntity);
+    public StudentEntity saveStudent(StudentEntity studentEntity, String schemaName) {
+        return studentRepository.save(studentEntity, schemaName);
     }
 
-    public StudentEntity deleteStudent(Integer id) {
-        StudentEntity studentEntity = getStudentById(id);
-        studentRepository.deleteById(id);
+    public StudentEntity deleteStudent(Integer id, String schemaName) {
+        StudentEntity studentEntity = getStudentById(id, schemaName);
+        studentRepository.deleteByIdAndSchema(id, schemaName);
         return studentEntity;
     }
 
-    public StudentEntity updateStudent(StudentEntity studentEntity) {
-        return studentRepository.save(studentEntity);
+    public StudentEntity updateStudent(StudentEntity studentEntity, String schemaName) {
+        return studentRepository.save(studentEntity, schemaName);
     }
 
-    public List<StudentEntity> getAllStudents() {
-        return studentRepository.findAll();
+    public List<StudentEntity> getAllStudents(String schemaName) {
+        return studentRepository.findAllBySchema(schemaName);
     }
 
-    public StudentEntity getStudentById(Integer id) {
-        return studentRepository.findById(id).orElse(null);
+    public StudentEntity getStudentById(Integer id, String schemaName) {
+        return studentRepository.findByIdAndSchema(id, schemaName);
     }
 }

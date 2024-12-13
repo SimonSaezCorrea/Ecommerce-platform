@@ -16,5 +16,4 @@ public class CourseEntity {
     private String name;
     private String description;
     private int id_professor;
-    private int id_school;
 }

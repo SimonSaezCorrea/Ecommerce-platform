@@ -15,7 +15,6 @@ import java.util.Map;
 
 @Component
 public class TenantDataSource implements Serializable {
-
     private HashMap<String, DataSource> dataSources = new HashMap<>();
 
     @Autowired
@@ -56,5 +55,4 @@ public class TenantDataSource implements Serializable {
         }
         return null;
     }
-
 }

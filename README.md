@@ -125,6 +125,23 @@ Considerar que el multitenant es solo para el proyecto multitenant, por lo que
 acceder al proyecto schoolar no requiere de estos headers. Este funciona como
 el inquilino principal, idealmente suele ser parte del login.
 
+#
+#
+
+Además hay que considerar que para hacer una peticion GET, POST, PUT o DELETE, 
+se debe colocar un parametro especial en la URL, el cual es el schemaName.
+
+Es decir las peticiones deben ser de la siguiente forma:
+
+```
+GET http://localhost:8080/course/getall?schemaName=<Nombre del Schema entre comillas>
+```
+
+```
+GET http://localhost:8080/course/getall?schemaName="school1"
+```
+
+
 
 ---
 ## Creditos

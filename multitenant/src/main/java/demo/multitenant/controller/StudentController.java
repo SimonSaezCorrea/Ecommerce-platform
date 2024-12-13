@@ -13,28 +13,28 @@ public class StudentController {
     @Autowired
     private StudentService studentService;
 
-    @PostMapping("/")
-    public StudentEntity saveStudent(StudentEntity studentEntity) {
-        return studentService.saveStudent(studentEntity);
+    @PostMapping("/create")
+    public StudentEntity saveStudent(@RequestBody StudentEntity studentEntity, @RequestParam String schemaName) {
+        return studentService.saveStudent(studentEntity, schemaName);
     }
 
-    @DeleteMapping("/{id}")
-    public StudentEntity deleteStudent(@PathVariable Integer id) {
-        return studentService.deleteStudent(id);
+    @DeleteMapping("/delete/{id}")
+    public StudentEntity deleteStudent(@PathVariable Integer id, @RequestParam String schemaName) {
+        return studentService.deleteStudent(id, schemaName);
     }
 
-    @PutMapping("/")
-    public StudentEntity updateStudent(StudentEntity studentEntity) {
-        return studentService.updateStudent(studentEntity);
+    @PutMapping("/update")
+    public StudentEntity updateStudent(@RequestBody StudentEntity studentEntity, @RequestParam String schemaName) {
+        return studentService.updateStudent(studentEntity, schemaName);
     }
 
-    @GetMapping("/{id}")
-    public StudentEntity getStudentById(@PathVariable Integer id) {
-        return studentService.getStudentById(id);
+    @GetMapping("/get/{id}")
+    public StudentEntity getStudentById(@PathVariable Integer id, @RequestParam String schemaName) {
+        return studentService.getStudentById(id, schemaName);
     }
 
-    @GetMapping("/")
-    public List<StudentEntity> getAllStudents() {
-        return studentService.getAllStudents();
+    @GetMapping("/getall")
+    public List<StudentEntity> getAllStudents(@RequestParam String schemaName) {
+        return studentService.getAllStudents(schemaName);
     }
 }

@@ -15,28 +15,29 @@ public class CourseController {
     private CourseService courseService;
 
     // Add methods here
-    @PostMapping("/")
-    public ResponseEntity<CourseEntity> saveCourse(CourseEntity courseEntity) {
-        return ResponseEntity.ok(courseService.saveCourse(courseEntity));
+    @PostMapping("/create")
+    public ResponseEntity<CourseEntity> saveCourse(@RequestBody CourseEntity courseEntity, @RequestParam String schemaName) {
+        return ResponseEntity.ok(courseService.saveCourse(courseEntity, schemaName));
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<CourseEntity> deleteCourse(@PathVariable Integer id) {
-        return ResponseEntity.ok(courseService.deleteCourse(id));
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<CourseEntity> deleteCourse(@PathVariable Integer id, @RequestParam String schemaName) {
+        return ResponseEntity.ok(courseService.deleteCourse(id, schemaName));
     }
 
-    @PutMapping("/")
-    public ResponseEntity<CourseEntity> updateCourse(CourseEntity courseEntity) {
-        return ResponseEntity.ok(courseService.updateCourse(courseEntity));
+    @PutMapping("/update")
+    public ResponseEntity<CourseEntity> updateCourse(@RequestBody CourseEntity courseEntity, @RequestParam String schemaName) {
+        return ResponseEntity.ok(courseService.updateCourse(courseEntity, schemaName));
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<CourseEntity> getCourseById(@PathVariable Integer id) {
-        return ResponseEntity.ok(courseService.getCourseById(id));
+    @GetMapping("/get/{id}")
+    public ResponseEntity<CourseEntity> getCourseById(@PathVariable Integer id, @RequestParam String schemaName) {
+        return ResponseEntity.ok(courseService.getCourseById(id, schemaName));
     }
 
-    @GetMapping("/")
-    public ResponseEntity<List<CourseEntity>> getAllCourses() {
-        return ResponseEntity.ok(courseService.getAllCourses());
+    @GetMapping("/getall")
+    public ResponseEntity<List<CourseEntity>> getAllCourses(@RequestParam String schemaName) {
+        return ResponseEntity.ok(courseService.getAllCourses(schemaName));
     }
+
 }
