@@ -30,15 +30,3 @@ spring:
           uri: lb://multitenant
           predicates:
             - Path=/course/**
-        - id: multitenant
-          uri: lb://multitenant
-          predicates:
-            - Path=/professor/**
-        - id: multitenant
-          uri: lb://multitenant
-          predicates:
-            - Path=/student/**
-        - id: schoolar
-          uri: lb://schoolar
-          predicates:
-            - Path=/school/**
